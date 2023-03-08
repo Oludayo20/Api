@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 
 const userSchema = new mongoose.Schema(
   {
@@ -14,14 +15,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    role: {
-      type: String,
-      default: 'User'
-    },
-    status: {
-      type: String,
-      enum: ['Pending', 'Active'],
-      default: 'Pending'
+    verified: {
+      type: Boolean,
+      default: false,
+      required: true
     },
     confirmationCode: {
       type: String,
